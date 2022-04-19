@@ -4,30 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test</title>
+  <title>Timer</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  
   <div id="timer">
-    
+    <svg>
+      <circle 
+        cx="200" 
+        cy="200" 
+        fill="transparent" 
+        stroke="black" 
+        stroke-width="20px" 
+        />
+    </svg>
     <div id="flex">
       <input id="time" type="text" data-value="3">
       <button id="playBtn"><i class="fa-solid fa-play"></i></button>
       <button id="pauseBtn"><i class="fa-solid fa-pause"></i></button>  
     </div>
-    
-    <svg>
-      <circle 
-        cx="200" 
-        cy="200" 
-        r="190"
-        fill="transparent" 
-        stroke="red" 
-        stroke-width="20px" 
-        />
-    </svg>
   </div>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
