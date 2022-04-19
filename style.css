@@ -9,6 +9,7 @@ body {
 
 input, textarea, select {
   font-family: inherit;
+  font-size: inherit;
 }
 
 svg {
@@ -35,12 +36,12 @@ circle {
 }
 
 #flex {
-  font-size: 1.5em;
+  font-size: 2em;
   position: absolute;
-  max-width: 20vw;
+  width: 12ch;
   left: 50%;
   top: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%, -50%);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -50,15 +51,14 @@ circle {
   border: 0;
   color: white;
   background-color: black;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   margin-block: 4px;
 }
 
 #time {
-  font-size: 1.5em;
   position: relative;
-  width: 100%;
+  width: 50%;
   -moz-column-break-after: always;
        break-after: always;
   text-align: center;
