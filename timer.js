@@ -4,6 +4,7 @@ class Timer {
     this.playBtn = playBtn;
     this.pauseBtn = pauseBtn;
     this.updateTime = 20;
+    this.timeOnPause = this.currentTime;
     if (callbacks) {
       this.onStart = callbacks.onStart;
       this.onTick = callbacks.onTick;
@@ -16,7 +17,8 @@ class Timer {
   }
   play = () => {
     if (this.currentTime <= 0) return;
-    if (this.onStart) this.onStart(this.currentTime);
+    if (this.onStart) this.onStart(this.currentTime, this.changed);
+    this.changed = false;
     this.tick();
     this.interval = setInterval(() => {
       this.tick();
@@ -25,7 +27,7 @@ class Timer {
   tick = () => {
     this.currentTime -= this.updateTime / 1000;
     if (this.onTick) this.onTick(this.currentTime);
-    if (this.currentTime == 0) this.pause();
+    if (this.currentTime <= 0) this.pause();
 
     const fractionLeft = Number(this.currentTime).toFixed(2);
     const units = parseInt(this.currentTime);
@@ -36,12 +38,47 @@ class Timer {
         : `${units}:${secondsLeft}`;
   };
   pause = () => {
-    if (this.onPause) this.onPause();
+    this.timeOnPause = this.currentTime;
+    if (this.onPause) this.onPause(this.timeOnPause);
     clearInterval(this.interval);
   };
   updateTimer = () => {
-    if (this.timeElement.value)
-      this.currentTime = parseInt(this.timeElement.value);
+    function restCalc(input, colonIndex) {
+      return colonIndex === input.length - 1
+        ? 0
+        : parseInt(
+            colonIndex === input.length - 2
+              ? input.slice(colonIndex + 1, input.length) * 10
+              : input.slice(colonIndex + 1, input.length)
+          );
+    }
+    const input = this.timeElement.value;
+    if (input) {
+      const colonIndex = input.indexOf(':');
+      let sec, rest;
+      if (colonIndex !== -1) {
+        if (colonIndex === 0) {
+          sec = 0;
+          rest = restCalc(input, colonIndex);
+        } else {
+          sec = parseInt(input.slice(0, colonIndex));
+          rest = restCalc(input, colonIndex);
+        }
+      } else {
+        sec = parseInt(input);
+        rest = 0;
+      }
+      this.currentTime = sec + rest / 60;
+      console.log(this.currentTime, this.timeOnPause);
+    }
+    if (
+      // Przebudowanie musi być = sprawdzenie z tarczy nie z wartości
+      this.timeOnPause === this.currentTime ||
+      this.timeOnPause === this.currentTime + 0.01
+    )
+      this.changed = false;
+    else this.changed = true;
+    console.log(this.changed);
   };
   get currentTime() {
     return parseFloat(timeElement.getAttribute('data-value'));

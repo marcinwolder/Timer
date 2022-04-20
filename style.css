@@ -7,6 +7,13 @@ body {
   height: 100vh;
 }
 
+#ver {
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+  font-size: 10px;
+}
+
 input, textarea, select {
   font-family: inherit;
   font-size: inherit;
@@ -14,7 +21,7 @@ input, textarea, select {
 
 svg {
   position: relative;
-  height: 100%;
+  height: 400px;
   aspect-ratio: 1;
 }
 
@@ -26,11 +33,11 @@ circle {
 }
 
 #timer {
+  height: 400px;
   aspect-ratio: 1;
   position: relative;
   margin: auto;
   top: 50%;
-  max-height: 80vh;
   overflow: hidden;
   transform: translate(0, -50%);
 }
@@ -38,10 +45,10 @@ circle {
 #flex {
   font-size: 2em;
   position: absolute;
-  width: 12ch;
+  width: 180px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -51,14 +58,19 @@ circle {
   border: 0;
   color: white;
   background-color: black;
-  padding: 5px;
+  padding: 15px;
   border-radius: 5px;
   margin-block: 4px;
+  cursor: default;
+}
+
+#playBtn, #pauseBtn {
+  cursor: pointer;
 }
 
 #time {
   position: relative;
-  width: 50%;
+  width: 200px;
   -moz-column-break-after: always;
        break-after: always;
   text-align: center;
