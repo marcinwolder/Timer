@@ -16,6 +16,7 @@ class Timer {
     pauseBtn.addEventListener('click', this.pause);
   }
   play = () => {
+    playBtn.removeEventListener('click', this.play);
     if (this.currentTime <= 0) return;
     if (this.onStart) this.onStart(this.currentTime, this.changed);
     this.changed = false;
@@ -41,6 +42,7 @@ class Timer {
     this.timeOnPause = this.currentTime;
     if (this.onPause) this.onPause(this.timeOnPause);
     clearInterval(this.interval);
+    playBtn.addEventListener('click', this.play);
   };
   updateTimer = () => {
     function restCalc(input, colonIndex) {

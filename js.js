@@ -9,6 +9,11 @@ const circumference = 2 * Math.PI * radius;
 time.value = '3:00';
 let startingTime = 3;
 
+const timerBox = document.querySelector('#timer');
+console.dir(timerBox);
+console.log('Szerokość ' + window.innerWidth);
+console.log('Wysokość ' + window.innerHeight);
+
 const timer = new Timer(timeElement, playBtn, pauseBtn, {
   onStart(duration, hasChanged) {
     circle.style.visibility = 'visible';
