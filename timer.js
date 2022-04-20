@@ -20,7 +20,7 @@ class Timer {
     pauseBtn.addEventListener('click', this.pause);
   }
   play = () => {
-    playBtn.removeEventListener('click', this.play);
+    if (this.currentTime > 0) playBtn.removeEventListener('click', this.play);
     if (this.currentTime <= 0) return;
     if (this.onStart) this.onStart(this.currentTime, this.changed);
 

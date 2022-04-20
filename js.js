@@ -30,9 +30,6 @@ const timer = new Timer(timeElement, playBtn, pauseBtn, {
   onPause(time) {
     if (time <= 0) circle.setAttribute('stroke-dashoffset', `${0}px`);
   },
-  onFinish() {
-    console.log('Done');
-  },
   onTick(currentTime) {
     const x = circumference * (currentTime / startingTime);
     circle.setAttribute('stroke-dashoffset', `${x}px`);
