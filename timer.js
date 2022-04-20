@@ -71,7 +71,6 @@ class Timer {
         rest = 0;
       }
       this.currentTime = sec + rest / 60;
-      console.log(this.currentTime, this.timeOnPause);
     }
     if (
       // Przebudowanie musi być = sprawdzenie z tarczy nie z wartości
@@ -80,7 +79,6 @@ class Timer {
     )
       this.changed = false;
     else this.changed = true;
-    console.log(this.changed);
   };
   get currentTime() {
     return parseFloat(timeElement.getAttribute('data-value'));

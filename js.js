@@ -10,9 +10,16 @@ time.value = '3:00';
 let startingTime = 3;
 
 const timerBox = document.querySelector('#timer');
-console.dir(timerBox);
-console.log('Szerokość ' + window.innerWidth);
-console.log('Wysokość ' + window.innerHeight);
+
+const withinWindow = window.innerHeight >= 420 && window.innerWidth >= 420;
+
+if (!withinWindow) {
+  const smaller =
+    window.innerHeight < window.innerWidth
+      ? window.innerHeight
+      : window.innerWidth;
+  timerBox.style.transform = `translate(-50%, -50%) scale(${smaller / 420})`;
+}
 
 const timer = new Timer(timeElement, playBtn, pauseBtn, {
   onStart(duration, hasChanged) {
